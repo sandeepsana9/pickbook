@@ -1,10 +1,10 @@
-import './App.css';
+import Navigation from './components/Navigation';
 
 function App() {
   return (
-    <div className="App">
-      hello this is me
-    </div>
+    <>
+      <Navigation />
+    </>
   );
 }
 
