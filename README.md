@@ -1,1 +1,2 @@
-# pickbook
+cd client
+npm start
