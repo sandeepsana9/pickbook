@@ -12,7 +12,7 @@ app.use(express.json({ limit: '100mb' }));
 app.use(express.urlencoded({ limit: '100mb', extended: true }));
 app.use(morgan('dev')); 
 
-mongoose.connect('mongodb+srv://gondsgonds9:AOQAlrrdSkqC5GPN@cluster0.nhxiqqs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
+mongoose.connect('mongodb+srv://gondsgonds9:SmlFQegJ93W52Mr2@cluster0.hilmnmo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
 })
     .then(() => {
         console.log(`Database connection established`);
