@@ -14,6 +14,7 @@ export default function Login() {
         try {
             const response = await axios.post('http://localhost:3002/api/authentication/login', data);
             if (response) {
+                localStorage.setItem("userId", response.data.userId);
                 navigate('/dashboard')
                 toast.success(response.data.message);
             }
@@ -30,13 +31,25 @@ export default function Login() {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group">
                     <label htmlFor="email">Email<span>*</span></label>
-                    <input type="text" id="email" name="email" {...register("email", {required: true})} placeholder='Enter Email' className={`form-control ${errors.email ? 'error-border' : ''}`} />
-                    {errors.email && <span className='error'>please fill last name</span>}
+                    <input type="text" id="email" name="email" {...register("email", {
+                        required: "You must specify a email" ,
+                        pattern: {
+                            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                            message: 'Invalid email format',
+                        },
+                    })} placeholder='Enter Email' className={`form-control ${errors.email ? 'error-border' : ''}`} />
+                    {errors.email && <span className='error'>{errors.email.message}</span>}
                 </div>
                 <div className="form-group">
                     <label htmlFor="password">Password<span>*</span></label>
-                    <input type="text" id="password" name="password" {...register("password", {required: true})} placeholder='Enter Password' className={`form-control ${errors.password ? 'error-border' : ''}`} />
-                    {errors.password && <span className='error'>please fill last name</span>}
+                    <input type="text" id="password" name="password" {...register("password", {
+                        required: "You must specify a password",
+                        minLength: {
+                            value: 8,
+                            message: "password must have at least 8 characters"
+                        }
+                    })} placeholder='Enter Password' className={`form-control ${errors.password ? 'error-border' : ''}`} />
+                    {errors.password && <span className='error'>{errors.password.message}</span>}
                 </div>
                 <button type='submit' className="btn btn-primary">Login</button>
             </form>

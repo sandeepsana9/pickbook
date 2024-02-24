@@ -13,14 +13,12 @@ export default function SignUp() {
     const onSubmit = async (data) => {
         try {
             const response = await axios.post('http://localhost:3002/api/authentication/signup', data);
-            console.log('Response:', response.data);
             if (response) {
                 navigate('/login')
                 toast.success(response.data.message);
             }
         } catch (error) {
-            console.log(error);
-            toast.error(error.message);
+            toast.error(error.response.data.message);
         }
 
     };
@@ -41,8 +39,14 @@ export default function SignUp() {
                 </div>
                 <div className="form-group">
                     <label htmlFor="email">Email<span>*</span></label>
-                    <input type="text" id="email" name="email" {...register("email", { required: "You must specify a email" })} placeholder='Enter Email' className={`form-control ${errors.email ? 'error-border' : ''}`} />
-                    {errors.email && <span className='error'>{errors.email   .message}</span>}
+                    <input type="text" id="email" name="email" {...register("email", { 
+                        required: "You must specify a email" ,
+                        pattern: {
+                            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                            message: 'Invalid email format',
+                          },
+                        })} placeholder='Enter Email' className={`form-control ${errors.email ? 'error-border' : ''}`} />
+                    {errors.email && <span className='error'>{errors.email.message}</span>}
                 </div>
                 <div className="form-group">
                     <label htmlFor="password">Password<span>*</span></label>
