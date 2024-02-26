@@ -7,6 +7,7 @@ import Landing from './pages/landing/Landing';
 import SignUp from './pages/authentication/SignUp';
 import Login from './pages/authentication/Login';
 import Dashboard from './pages/dashboard/Dashboard';
+import Photo from './pages/photo/Photo';
 
 
 
@@ -20,6 +21,7 @@ function App() {
           <Route path='/signup' element={<SignUp />} />
           <Route path='/login' element={<Login />} />
           <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/photo' element={<Photo />} />
         </Routes>
       </Router>
     </>

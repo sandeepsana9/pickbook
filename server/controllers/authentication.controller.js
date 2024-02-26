@@ -23,6 +23,8 @@ const login = async (request, response) => {
         const login = await authenticationDao.exists({ email: request.body.email, password: request.body.password })
         if (login) {
             return response.status(STATUS.OK).send({ userId: login._id, message: 'login successfully' });
+        }else{
+            return response.status(STATUS.ERROR).send({ message: 'Incorrect Email or Password'});
         }
     } catch (error) {
         return response.status(STATUS.ERROR).send({ message: error });

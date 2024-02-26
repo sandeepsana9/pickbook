@@ -43,3 +43,9 @@ input[type="text"] {
 .error-border{
     border: 1px solid red !important;
 }
+.position-absolute{
+    position: absolute;
+}
+.right-15{
+    right: 15%;
+}

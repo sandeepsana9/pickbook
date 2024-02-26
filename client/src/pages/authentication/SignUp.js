@@ -22,6 +22,9 @@ export default function SignUp() {
         }
 
     };
+    const goToLogin = () => {
+        navigate("/login")
+    }
 
     return (
 
@@ -39,13 +42,13 @@ export default function SignUp() {
                 </div>
                 <div className="form-group">
                     <label htmlFor="email">Email<span>*</span></label>
-                    <input type="text" id="email" name="email" {...register("email", { 
-                        required: "You must specify a email" ,
+                    <input type="text" id="email" name="email" {...register("email", {
+                        required: "You must specify a email",
                         pattern: {
                             value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                             message: 'Invalid email format',
-                          },
-                        })} placeholder='Enter Email' className={`form-control ${errors.email ? 'error-border' : ''}`} />
+                        },
+                    })} placeholder='Enter Email' className={`form-control ${errors.email ? 'error-border' : ''}`} />
                     {errors.email && <span className='error'>{errors.email.message}</span>}
                 </div>
                 <div className="form-group">
@@ -59,7 +62,14 @@ export default function SignUp() {
                     })} placeholder='Enter Password' className={`form-control ${errors.password ? 'error-border' : ''}`} />
                     {errors.password && <span className='error'>{errors.password.message}</span>}
                 </div>
-                <button type='submit' className="btn btn-primary">Save</button>
+                <div className='d-flex'>
+                    <div className='form-group'>
+                        <button type='submit' className="btn btn-primary">Save</button>
+                    </div>
+                    <div className='form-group position-absolute right-15'>
+                        <button type='button' onClick={goToLogin} className="btn btn-primary">Login</button>
+                    </div>
+                </div>
             </form>
         </div>
     );

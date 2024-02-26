@@ -30,3 +30,13 @@ a{
     display: flex;
     align-items: center;
 }
+
+.position-absolute{
+    position: absolute;
+}
+.right-5{
+    right: 5%;
+}
+.text-transform-capitalize{
+    text-transform: capitalize;
+}
