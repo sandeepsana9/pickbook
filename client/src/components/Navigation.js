@@ -26,7 +26,8 @@ export default function Navigation() {
 
     useEffect(() => {
         getUserDetails();
-    });
+    }, []); // Empty dependency array ensures this effect runs only once, after the initial render
+
     return (
         <nav className="">
             <div className="d-flex">
